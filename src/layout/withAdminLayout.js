@@ -170,7 +170,7 @@ const ThemeLayout = WrappedComponent => {
                     to="/admin"
                   >
                     <img
-                      src={!darkMode ? require(`../static/img/Logo_Dark.svg`) : require(`../static/img/Logo_white.png`)}
+                      src={!darkMode ? require(`../static/img/levels-logo.svg`) : require(`../static/img/Logo_white.png`)}
                       alt=""
                     />
                   </Link>

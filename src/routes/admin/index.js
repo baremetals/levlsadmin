@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Spin } from 'antd';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import Dashboard from './dashboard';
+import Opportunities from './opportunities';
 import withAdminLayout from '../../layout/withAdminLayout';
 
 const Admin = () => {
@@ -17,6 +18,7 @@ const Admin = () => {
         }
       >
         <Route path={path} component={Dashboard} />
+        <Route path={path} component={Opportunities} />
       </Suspense>
     </Switch>
   );
