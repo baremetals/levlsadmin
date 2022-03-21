@@ -1751,6 +1751,19 @@ const Label = Styled.label`
     font-size: 16px;
     display: block;
     margin-bottom: 5px;
+    &.edit-profile-input {
+        display: table;
+        border: 1px solid #e7e7e7;
+        padding: 7px 30px;
+        border-radius: 10px;
+        margin: 0 auto 20px;
+        input {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
 `;
 
 const Input = Styled.input`
@@ -1786,6 +1799,26 @@ const InputSelect = Styled.select`
 const ImagePreview = styled.div`
     display: flex;
     align-items: center;
+    &.edit-profile-info {
+        width: 200px;
+        height: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        text-align: center;
+        flex-direction: column;
+        margin-bottom: 15px;
+        .ant-image {
+            border-radius: 100%;
+            overflow: hidden;
+            height: 100%;
+            img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        
+    }
 `;
 const ImagePreviewDetail = styled.div`
     flex: 1 0 0%;

@@ -21,6 +21,13 @@ const ViewInternship = () => {
                 <Text>Submission Deadline</Text>
                 <SubmissionDate>15 Jan 2022</SubmissionDate>
             </Submission>
+            <BlockHead style={{marginTop: '30px'}}>
+                <Image preview={false} src={'https://firebasestorage.googleapis.com/v0/b/justappli-b9f5c.appspot.com/o/profile-images%2F260968181805.png?alt=media&token=e18cb2da-35e3-4bab-81be-651f5f210bec'} />
+                <BlockName style={{fontSize: '18px'}}>
+                    Daniel
+                    <Text style={{display: 'block', fontSize: '14px', color: '#000'}}>offered in conjunction with Queen</Text>
+                </BlockName>
+            </BlockHead>
             
         </>
     )

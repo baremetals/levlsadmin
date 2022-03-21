@@ -6,6 +6,7 @@ import Opportunities from './opportunities';
 import Articles from './articles';
 import Events from './events';
 import Resources from './resources';
+import EditProfile from './editprofile';
 import withAdminLayout from '../../layout/withAdminLayout';
 
 const Admin = () => {
@@ -25,6 +26,7 @@ const Admin = () => {
         <Route path={path} component={Articles} />
         <Route path={path} component={Events} />
         <Route path={path} component={Resources} />
+        <Route path={path} component={EditProfile} />
       </Suspense>
     </Switch>
   );
