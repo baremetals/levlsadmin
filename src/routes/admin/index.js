@@ -3,6 +3,9 @@ import { Spin } from 'antd';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import Dashboard from './dashboard';
 import Opportunities from './opportunities';
+import Articles from './articles';
+import Events from './events';
+import Resources from './resources';
 import withAdminLayout from '../../layout/withAdminLayout';
 
 const Admin = () => {
@@ -19,6 +22,9 @@ const Admin = () => {
       >
         <Route path={path} component={Dashboard} />
         <Route path={path} component={Opportunities} />
+        <Route path={path} component={Articles} />
+        <Route path={path} component={Events} />
+        <Route path={path} component={Resources} />
       </Suspense>
     </Switch>
   );

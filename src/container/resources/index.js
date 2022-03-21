@@ -1,20 +1,20 @@
 import { Button, Col, Image, Modal, PageHeader, Row } from 'antd';
 import React, { useState } from 'react';
-import { Block, BlockBody, BlockFooter, BlockHead, BlockName, BlockText, BlockTitle, Submission, SubmissionDate, Main } from '../../styled';
-import initialNews from '../../../demoData/news.json';
+import { Block, BlockBody, BlockFooter, BlockHead, BlockName, BlockText, BlockTitle, Submission, SubmissionDate, Main } from '../styled';
+import initialNews from '../../demoData/news.json';
 import Text from 'antd/lib/typography/Text';
-import EditOpportunities from '../../../components/opportunities/EditModal';
-import ViewOpportunities from '../../../components/opportunities/ViewModal';
+import EditOpportunities from '../../components/opportunities/EditModal';
+import ViewOpportunities from '../../components/opportunities/ViewModal';
 
 
-const Funding = () => {
+const Resources = () => {
     const [allNews] = useState(initialNews)
     const [modalData, setViewModal] = useState(false)
     const [editModal, setEditModal] = useState(false)
 
     return (
         <>
-            <PageHeader title="Funding"></PageHeader>
+            <PageHeader title="Resources"></PageHeader>
             <Main>
                 <Row gutter={25}>
                     {allNews.concat(allNews).concat(allNews).map((news, index) => <Col key={index} className='block-col' xxl={6} lg={8} md={12}>
@@ -57,4 +57,4 @@ const Funding = () => {
     )
 }
 
-export default Funding;
+export default Resources;

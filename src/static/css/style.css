@@ -1276,10 +1276,6 @@ ul {
   box-shadow: 0 8px 15px #9299b815;
 }
 
-.ant-tooltip .ant-tooltip-arrow {
-  /* position: relative; */
-}
-
 .ant-tooltip .ant-tooltip-arrow:after {
   position: absolute;
   left: 50%;
@@ -2636,6 +2632,7 @@ li.active > .display {
 
 
 /* rtl section from here */
+
 html[dir='rtl'] .ant-card-head-title span {
   margin-right: 15px;
 }
@@ -2665,100 +2662,15 @@ html[dir='rtl'] .ant-menu-vertical .ant-menu-submenu-title {
   padding-right: 15px !important;
 }
 
-.job-col {
+.block-col {
   display: flex;
-}
-.card-job {
-  padding: 25px;
-  background-color: #fff;
-  border-radius: 10px;
-  width: 100%;
-  margin-bottom: 25px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 5px 20px rgb(146 153 184 / 13%);
-}
-.card-body {
-  margin-bottom: auto;
-}
-.card-body p {
-  font-size: 16px;
-}
-.card-head {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.card-subtitle {
-  font-size: 16px;
-  margin-bottom: 0;
-}
-
-.card-title {
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 1.4;
-  margin-bottom: 15px;
-}
-
-.card-image {
-  border-radius: 100%;
-  margin-right: 15px;
-}
-
-.card-footer {
-  display: flex;
-  margin-top: 20px;
 }
 
 .delete {
   margin-left: auto;
 }
 
-.modal-subtitle {
-  font-size: 20px;
-  margin-bottom: 0;
-}
-
-.modal-title {
-  font-size: 30px;
-  font-weight: bold;
-  line-height: 1.4;
-}
-
-.job-modal .ant-modal-footer {
-  padding: 20px 40px;
-}
-.submission {
-  margin-top: 25px;
-}
-.submission span {
-  display: block;
-  font-size: 16px;
-}
-
-.submission h4 {
-  margin-bottom: 0;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.modal-content h2 { font-size: 28px; font-weight: bold; line-height: 1.4; }
-.modal-content h3 { font-size: 24px; font-weight: bold; line-height: 1.4; }
-.modal-content h4 { font-size: 20px; font-weight: bold; line-height: 1.4; }
-.modal-content h5 { font-size: 18px; font-weight: bold; line-height: 1.4; }
-.modal-content h5 { font-size: 16px; font-weight: bold; line-height: 1.4; }
-
-.modal-content ul {
-  list-style: disc;
-  padding-left: 30px;
-  font-size: 16px;
-}
-.modal-content p {
-  font-size: 16px;
-}
-
-.modal-content > * {
-  margin-bottom: 15px;
+.rdw-editor-main {
+  padding: 10px;
+  border: 1px solid #F1F1F1;
 }

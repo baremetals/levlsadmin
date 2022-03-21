@@ -968,4 +968,5 @@ const TopMenuStyle = Styled.div`
         }
     }
 `;
+
 export { Div, SmallScreenAuthInfo, SmallScreenSearch, ModeSwitch, TopMenuStyle, TopMenuSearch };
