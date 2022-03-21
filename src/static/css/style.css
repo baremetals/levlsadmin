@@ -1276,10 +1276,6 @@ ul {
   box-shadow: 0 8px 15px #9299b815;
 }
 
-.ant-tooltip .ant-tooltip-arrow {
-  /* position: relative; */
-}
-
 .ant-tooltip .ant-tooltip-arrow:after {
   position: absolute;
   left: 50%;
@@ -2636,6 +2632,7 @@ li.active > .display {
 
 
 /* rtl section from here */
+
 html[dir='rtl'] .ant-card-head-title span {
   margin-right: 15px;
 }
@@ -2663,4 +2660,17 @@ html[dir='rtl'] .ant-menu.ant-menu-vertical .ant-menu-submenu-arrow {
 
 html[dir='rtl'] .ant-menu-vertical .ant-menu-submenu-title {
   padding-right: 15px !important;
+}
+
+.block-col {
+  display: flex;
+}
+
+.delete {
+  margin-left: auto;
+}
+
+.rdw-editor-main {
+  padding: 10px;
+  border: 1px solid #F1F1F1;
 }

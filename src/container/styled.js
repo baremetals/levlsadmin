@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import Styled from 'styled-components';
 
 const Main = Styled.div`
@@ -1682,27 +1683,146 @@ const ExportStyleWrap = Styled.div`
         }
     }
 `;
-export {
-  Main,
-  ButtonsGroupWrapper,
-  BlockButtonsWrapper,
-  ButtonSizeWrapper,
-  BtnWithIcon,
-  AlertList,
-  AutoCompleteWrapper,
-  CalendarWrapper,
-  DatePickerWrapper,
-  NotificationListWrapper,
-  TagInput,
-  PageHeaderWrapper,
-  MessageStyleWrapper,
-  BasicFormWrapper,
-  CardToolbox,
-  FormGroupWrapper,
-  DragDropStyle,
-  BannerCardStyleWrap,
-  FileCardWrapper,
-  TableWrapper,
-  ImportStyleWrap,
-  ExportStyleWrap,
-};
+
+const Block = Styled.div`
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 20px rgb(146 153 184 / 13%);
+    .ant-typography {
+        display: block;
+    }
+`;
+
+const BlockHead = Styled.div`
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        margin-right: 10px;
+    }
+`;
+
+const BlockBody = Styled.div`
+    padding: 25px;
+`;
+
+const BlockName = Styled.span`
+    font-size: 17px;
+    color: #5F63F2;
+`;
+
+const BlockTitle = Styled.h2``;
+
+const BlockText = Styled.div``;
+
+const SubmissionDate = Styled.h3`
+    text-transform: uppercase;
+    font-weight: bold;
+`;
+
+const Submission = Styled.div`
+    margin-top: 15px;
+`;
+
+const BlockFooter = Styled.div`
+    display: flex;
+    margin-top: auto;
+    padding: 0 25px 25px;
+`;
+
+const ActicleDetail = Styled.div``;
+
+
+const EditForm = Styled.form``;
+
+const InputGroup = Styled.div`
+    margin-bottom: 15px;
+`;
+
+const Label = Styled.label`
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+    &.edit-profile-input {
+        display: table;
+        border: 1px solid #e7e7e7;
+        padding: 7px 30px;
+        border-radius: 10px;
+        margin: 0 auto 20px;
+        input {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+`;
+
+const Input = Styled.input`
+    outline: none;
+    width: 100%;
+    display: block;
+    border: 1px solid #E3E6EF;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: #000;
+`;
+
+const InputTextarea = Styled.textarea`
+    outline: none;
+    width: 100%;
+    display: block;
+    border: 1px solid #E3E6EF;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: #000;
+`;
+
+const InputSelect = Styled.select`
+    outline: none;
+    width: 100%;
+    display: block;
+    border: 1px solid #E3E6EF;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: #000;
+`;
+
+const ImagePreview = styled.div`
+    display: flex;
+    align-items: center;
+    &.edit-profile-info {
+        width: 200px;
+        height: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        text-align: center;
+        flex-direction: column;
+        margin-bottom: 15px;
+        .ant-image {
+            border-radius: 100%;
+            overflow: hidden;
+            height: 100%;
+            img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        
+    }
+`;
+const ImagePreviewDetail = styled.div`
+    flex: 1 0 0%;
+    padding-left: 15px;
+`;
+
+export { Main, ButtonsGroupWrapper, BlockButtonsWrapper, ButtonSizeWrapper, BtnWithIcon, AlertList, AutoCompleteWrapper, CalendarWrapper, DatePickerWrapper, NotificationListWrapper, TagInput, PageHeaderWrapper, MessageStyleWrapper, BasicFormWrapper, CardToolbox, FormGroupWrapper, DragDropStyle, BannerCardStyleWrap, FileCardWrapper, TableWrapper, ImportStyleWrap, ExportStyleWrap, Block, BlockHead, BlockBody, BlockFooter, BlockName, BlockTitle, Submission, BlockText, SubmissionDate, ActicleDetail, EditForm, InputGroup, Label, Input, InputTextarea, InputSelect, ImagePreview, ImagePreviewDetail };

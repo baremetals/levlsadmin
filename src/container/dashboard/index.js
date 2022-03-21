@@ -9,13 +9,13 @@ import { Main } from '../styled';
 // import { ExportButtonPageHeader } from '../../components/buttons/export-button/export-button';
 // import { CalendarButtonPageHeader } from '../../components/buttons/calendar-button/calendar-button';
 
-const SocialMediaOverview = lazy(() => import('./overview/index/SocialMediaOverview'));
-const FacebookOverview = lazy(() => import('./overview/index/FacebookOverview'));
-const YoutubeSubscribers = lazy(() => import('./overview/index/YoutubeSubscribers'));
-const TwitterOverview = lazy(() => import('./overview/index/TwitterOverview'));
-const InstagramOverview = lazy(() => import('./overview/index/InstagramOverview'));
-const LinkedinKeyMetrics = lazy(() => import('./overview/index/LinkedinKeyMetrics'));
-const SocialTrafficMetrics = lazy(() => import('./overview/index/SocialTrafficMetrics'));
+// const SocialMediaOverview = lazy(() => import('./overview/index/SocialMediaOverview'));
+// const FacebookOverview = lazy(() => import('./overview/index/FacebookOverview'));
+// const YoutubeSubscribers = lazy(() => import('./overview/index/YoutubeSubscribers'));
+// const TwitterOverview = lazy(() => import('./overview/index/TwitterOverview'));
+// const InstagramOverview = lazy(() => import('./overview/index/InstagramOverview'));
+// const LinkedinKeyMetrics = lazy(() => import('./overview/index/LinkedinKeyMetrics'));
+// const SocialTrafficMetrics = lazy(() => import('./overview/index/SocialTrafficMetrics'));
 
 const Dashboard = () => {
   return (
@@ -45,7 +45,7 @@ const Dashboard = () => {
                 </Cards>
               }
             >
-              <SocialMediaOverview />
+              {/* <SocialMediaOverview /> */}
             </Suspense>
           </Col>
 
@@ -57,7 +57,7 @@ const Dashboard = () => {
                 </Cards>
               }
             >
-              <FacebookOverview />
+              {/* <FacebookOverview /> */}
             </Suspense>
           </Col>
 
@@ -69,7 +69,7 @@ const Dashboard = () => {
                 </Cards>
               }
             >
-              <YoutubeSubscribers />
+              {/* <YoutubeSubscribers /> */}
             </Suspense>
           </Col>
           <Col xxl={8} md={8} xs={24}>
@@ -80,7 +80,7 @@ const Dashboard = () => {
                 </Cards>
               }
             >
-              <TwitterOverview />
+              {/* <TwitterOverview /> */}
             </Suspense>
           </Col>
           <Col xxl={8} md={8} xs={24}>
@@ -91,7 +91,7 @@ const Dashboard = () => {
                 </Cards>
               }
             >
-              <InstagramOverview />
+              {/* <InstagramOverview /> */}
             </Suspense>
           </Col>
           <Col xxl={8} md={8} xs={24}>
@@ -102,7 +102,7 @@ const Dashboard = () => {
                 </Cards>
               }
             >
-              <LinkedinKeyMetrics />
+              {/* <LinkedinKeyMetrics /> */}
             </Suspense>
           </Col>
           <Col xxl={16} xs={24}>
@@ -113,7 +113,7 @@ const Dashboard = () => {
                 </Cards>
               }
             >
-              <SocialTrafficMetrics />
+              {/* <SocialTrafficMetrics /> */}
             </Suspense>
           </Col>
         </Row>
