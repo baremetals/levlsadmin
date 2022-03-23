@@ -11,7 +11,10 @@ const Articles = () => {
     const [EditArticle, setEditArticle] = useState(false)
     return (
         <>
-            <PageHeader title="Articles"></PageHeader>
+
+            <PageHeader title="Articles" className='heading'>
+                <Button type='primary' size='large' onClick={() => setEditArticle(true)}>+ Add Article</Button>
+            </PageHeader>
             
             <Main>
                 <Row gutter={25}>

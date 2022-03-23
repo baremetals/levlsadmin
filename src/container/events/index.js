@@ -11,7 +11,9 @@ const Events = () => {
     const [EditArticle, setEditArticle] = useState(false)
     return (
         <>
-            <PageHeader title="Events"></PageHeader>
+            <PageHeader title="Events" className='heading'>
+                <Button type='primary' size='large' onClick={() => setEditArticle(true)}>+ Add Event</Button>
+            </PageHeader>
             
             <Main>
                 <Row gutter={25}>

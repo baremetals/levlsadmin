@@ -2674,3 +2674,12 @@ html[dir='rtl'] .ant-menu-vertical .ant-menu-submenu-title {
   padding: 10px;
   border: 1px solid #F1F1F1;
 }
+
+.heading {
+  display: flex;
+}
+
+.heading .ant-page-header-content {
+  padding-top: 0;
+  margin-left: auto;
+}

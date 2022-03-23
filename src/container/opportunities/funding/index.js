@@ -14,7 +14,9 @@ const Funding = () => {
 
     return (
         <>
-            <PageHeader title="Funding"></PageHeader>
+            <PageHeader title="Funding" className='heading'>
+                <Button type='primary' size='large' onClick={() => setEditModal(true)}>+ Add Funding</Button>
+            </PageHeader>
             <Main>
                 <Row gutter={25}>
                     {allNews.concat(allNews).concat(allNews).map((news, index) => <Col key={index} className='block-col' xxl={6} lg={8} md={12}>
