@@ -5,6 +5,7 @@ const Main = Styled.div`
     padding: 0px 30px 20px;
     min-height: 715px;
     background-color: rgb(244, 245, 247);
+
     &.grid-boxed{
         padding: 0px 180px 20px;
         @media only screen and (max-width: 1599px){
@@ -1740,7 +1741,6 @@ const BlockFooter = Styled.div`
 
 const ActicleDetail = Styled.div``;
 
-
 const EditForm = Styled.form``;
 
 const InputGroup = Styled.div`
@@ -1753,6 +1753,7 @@ const Label = Styled.label`
     margin-bottom: 5px;
     &.edit-profile-input {
         display: table;
+        position: relative;
         border: 1px solid #e7e7e7;
         padding: 7px 30px;
         border-radius: 10px;
@@ -1762,6 +1763,8 @@ const Label = Styled.label`
             position: absolute;
             top: 0;
             left: 0;
+            height: 100%;
+            width: 100%;
         }
     }
 `;
@@ -1825,4 +1828,8 @@ const ImagePreviewDetail = styled.div`
     padding-left: 15px;
 `;
 
-export { Main, ButtonsGroupWrapper, BlockButtonsWrapper, ButtonSizeWrapper, BtnWithIcon, AlertList, AutoCompleteWrapper, CalendarWrapper, DatePickerWrapper, NotificationListWrapper, TagInput, PageHeaderWrapper, MessageStyleWrapper, BasicFormWrapper, CardToolbox, FormGroupWrapper, DragDropStyle, BannerCardStyleWrap, FileCardWrapper, TableWrapper, ImportStyleWrap, ExportStyleWrap, Block, BlockHead, BlockBody, BlockFooter, BlockName, BlockTitle, Submission, BlockText, SubmissionDate, ActicleDetail, EditForm, InputGroup, Label, Input, InputTextarea, InputSelect, ImagePreview, ImagePreviewDetail };
+const AddPost = styled.a`
+    float: right;
+`;
+
+export { Main, ButtonsGroupWrapper, BlockButtonsWrapper, ButtonSizeWrapper, BtnWithIcon, AlertList, AutoCompleteWrapper, CalendarWrapper, DatePickerWrapper, NotificationListWrapper, TagInput, PageHeaderWrapper, MessageStyleWrapper, BasicFormWrapper, CardToolbox, FormGroupWrapper, DragDropStyle, BannerCardStyleWrap, FileCardWrapper, TableWrapper, ImportStyleWrap, ExportStyleWrap, Block, BlockHead, BlockBody, BlockFooter, BlockName, BlockTitle, Submission, BlockText, SubmissionDate, ActicleDetail, EditForm, InputGroup, Label, Input, InputTextarea, InputSelect, ImagePreview, ImagePreviewDetail, AddPost };

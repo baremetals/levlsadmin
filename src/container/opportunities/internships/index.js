@@ -13,7 +13,9 @@ const Internships = () => {
 
     return (
         <>
-            <PageHeader title="Internships"></PageHeader>
+            <PageHeader title="Internships" className='heading'>
+            <Button type='primary' size='large' onClick={() => setEditModal(true)}>+ Add Internships</Button>
+            </PageHeader>
 
             <Main>
                 <Row gutter={25}>
