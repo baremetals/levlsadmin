@@ -5,22 +5,24 @@ import { Provider, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { ConfigProvider } from 'antd';
-import store from './redux/store';
+import store from './app/redux/store';
 import Admin from './routes/admin';
 import Auth from './routes/auth';
 import './static/css/style.css';
 import config from './config/config';
 import ProtectedRoute from './components/utilities/protectedRoute';
+import { useIsAuth } from 'utility/localStorageControl';
 
 const { theme } = config;
 
 const ProviderConfig = () => {
+  
   const { rtl, isLoggedIn, topMenu, darkMode } = useSelector(state => {
     return {
       darkMode: state.ChangeLayoutMode.data,
       rtl: state.ChangeLayoutMode.rtlData,
       topMenu: state.ChangeLayoutMode.topMenu,
-      isLoggedIn: state.auth.login,
+      isLoggedIn: state.admin.authenticated,
     };
   });
 
@@ -50,6 +52,7 @@ const ProviderConfig = () => {
 };
 
 function App() {
+  useIsAuth();
   return (
     <Provider store={store}>
       <ProviderConfig />
