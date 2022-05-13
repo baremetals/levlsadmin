@@ -6,11 +6,9 @@ import FeatherIcon from 'feather-icons-react';
 import { InfoWraper, NavAuth, UserDropDwon } from './auth-info-style';
 import Message from './message';
 import Notification from './notification';
-import Settings from './settings';
-import Support from './support';
 import { Popover } from '../../popup/popup';
 import { Dropdown } from '../../dropdown/dropdown';
-import { logOut, getAdminData } from 'app/features/adminSlice';
+import { logOut } from 'app/features/adminSlice';
 import Heading from '../../heading/heading';
 
 

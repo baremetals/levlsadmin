@@ -17,6 +17,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.firebaserc
+.env.local.txt
 
 
 npm-debug.log*

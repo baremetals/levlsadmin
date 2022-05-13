@@ -1,50 +1,107 @@
 import { Button, Col, Image, Modal, PageHeader, Row } from 'antd';
-import React, { useState } from 'react';
-import { Main, Block, BlockBody, BlockFooter, BlockName, BlockTitle, BlockText } from '../styled';
-import NewsArticle from '../../demoData/news.json';
-import EditArticleModal from '../../components/article/EditArticle';
-import ViewArticleModal from '../../components/article/ViewArticle';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import CreateArticleModal from 'components/article/CreateArticle';
+import EditArticleModal from 'components/article/EditArticle';
+import ViewArticleModal from 'components/article/ViewArticle';
+import { getNewsArticles, deleteNewsArticle } from 'app/features/newsArticleSlice';
+import { Main, Block, BlockBody, BlockFooter, BlockName, BlockTitle } from '../styled';
 
 const Articles = () => {
-    const [AllArticle] = useState(NewsArticle)
-    const [ViewArticle, setViewArticle] = useState(false)
-    const [EditArticle, setEditArticle] = useState(false)
-    return (
-        <>
+  const dispatch = useDispatch();
+  const news = useSelector(state => state.news);
+  const { newsArticles } = news;
+  const [AllArticle] = useState([]);
+  const [ViewArticle, setViewArticle] = useState(false);
+  const [CreateArticle, setCreateArticle] = useState(false);
+  const [EditArticle, setEditArticle] = useState(false);
+  const [article, setArticle] = useState('');
 
-            <PageHeader title="Articles" className='heading'>
-                <Button type='primary' size='large' onClick={() => setEditArticle(true)}>+ Add Article</Button>
-            </PageHeader>
-            
-            <Main>
-                <Row gutter={25}>
-                    {AllArticle.concat(AllArticle).map((article) => <Col xxl={6} lg={8} md={12}  className='block-col'>
-                        <Block>
-                            <Image preview={false} src={'https://firebasestorage.googleapis.com/v0/b/justappli-b9f5c.appspot.com/o/news%2F608101005805.jpeg?alt=media&token=a4136d7d-49f3-4f71-a935-fbdc8401d0ff'} />
-                            <BlockBody>
-                                <BlockName>{article.category}</BlockName>
-                                <BlockTitle>{article.title}</BlockTitle>
-                                {/* <BlockText>{article.shortDescription}</BlockText> */}
-                            </BlockBody>
-                            <BlockFooter>
-                                <Button type='primary' onClick={() => setEditArticle(true)}>Edit</Button>
-                                <Button type='link' onClick={() => setViewArticle(true)}>View</Button>
-                                <Button type='danger' className='delete'>Delete</Button>
-                            </BlockFooter>
-                        </Block>
-                    </Col>)}
-                    
-                    <Modal onCancel={() => setViewArticle(false)} visible={ ViewArticle } width={700} bodyStyle={{padding: '40px'}}>
-                        <ViewArticleModal />
-                    </Modal>
-                    
-                    <Modal onCancel={() => setEditArticle(false)} visible={ EditArticle } width={600} bodyStyle={{padding: '40px'}}>
-                        <EditArticleModal />
-                    </Modal>
-                </Row>
-            </Main>
-        </>
-    )
-}
+  useEffect(() => {
+    dispatch(getNewsArticles());
+  }, [dispatch]);
+
+  // console.log(newsArticles);
+  const handleViewArticle = id => {
+    setViewArticle(true);
+    const findOne = newsArticles.filter(art => art.newsId === id);
+    setArticle(findOne);
+  };
+
+  const handleEditArticle = id => {
+    setEditArticle(true);
+    const findOne = newsArticles.filter(art => art.newsId === id);
+    setArticle(findOne);
+    // console.log(id);
+  };
+
+  
+  return (
+    <>
+      <PageHeader title="Articles" className="heading">
+        <Button type="primary" size="large" onClick={() => setCreateArticle(true)}>
+          + Add Article
+        </Button>
+      </PageHeader>
+
+      <Main>
+        <Row gutter={25}>
+          {AllArticle.concat(newsArticles).map(newsArt => (
+            <Col key={newsArt.newsId} xxl={6} lg={8} md={12} className="block-col">
+              <Block>
+                <Image preview={false} src={newsArt.uploadUrl} />
+                <BlockBody>
+                  <BlockName>{newsArt.category}</BlockName>
+                  <BlockTitle>{newsArt.title}</BlockTitle>
+                  {/* <BlockText>{newsArt.shortDescription}</BlockText> */}
+                </BlockBody>
+                <BlockFooter>
+                  <Button type="primary" onClick={() => handleEditArticle(newsArt.newsId)}>
+                    Edit
+                  </Button>
+                  <Button type="link" onClick={() => handleViewArticle(newsArt.newsId)}>
+                    View
+                  </Button>
+                  <Button type="danger" className="delete" onClick={() => dispatch(deleteNewsArticle(newsArt.newsId))}>
+                    Delete
+                  </Button>
+                </BlockFooter>
+              </Block>
+            </Col>
+          ))}
+
+          <Modal
+            onCancel={() => setViewArticle(false)}
+            visible={ViewArticle}
+            width={700}
+            bodyStyle={{ padding: '40px' }}
+            onOk={() => setViewArticle(false)}
+          >
+            <ViewArticleModal article={article} />
+          </Modal>
+
+          <Modal
+            onCancel={() => setCreateArticle(false)}
+            visible={CreateArticle}
+            width={600}
+            bodyStyle={{ padding: '40px' }}
+            // onOk={() => setCreateArticle(false)}
+          >
+            <CreateArticleModal />
+          </Modal>
+          <Modal
+            onCancel={() => setEditArticle(false)}
+            visible={EditArticle}
+            width={600}
+            bodyStyle={{ padding: '40px' }}
+            // onOK={() => setEditArticle(false)}
+          >
+            <EditArticleModal article={article} />
+          </Modal>
+        </Row>
+      </Main>
+    </>
+  );
+};
 
 export default Articles;

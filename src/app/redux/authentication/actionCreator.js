@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import actions from './actions';
 import axios from 'axios';
-import { API } from '../../../config/api'
+import { API } from 'config/api'
 
 const { loginBegin, loginSuccess, loginErr, logoutBegin, logoutSuccess, logoutErr } = actions;
 

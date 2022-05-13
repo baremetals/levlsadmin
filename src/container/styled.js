@@ -1,5 +1,10 @@
-import styled from 'styled-components';
 import Styled from 'styled-components';
+import styled from 'styled-components';
+import { Form } from 'antd';
+
+// export const FormWrap = styled.form`
+//   display: block;
+// `;
 
 const Main = Styled.div`
     padding: 0px 30px 20px;
@@ -1741,7 +1746,7 @@ const BlockFooter = Styled.div`
 
 const ActicleDetail = Styled.div``;
 
-const EditForm = Styled.form``;
+const EditForm = Styled(Form)``;
 
 const InputGroup = Styled.div`
     margin-bottom: 15px;

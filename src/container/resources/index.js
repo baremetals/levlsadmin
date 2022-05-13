@@ -1,62 +1,122 @@
-import { Button, Col, Image, Modal, PageHeader, Row } from 'antd';
-import React, { useState } from 'react';
-import { Block, BlockBody, BlockFooter, BlockHead, BlockName, BlockText, BlockTitle, Submission, SubmissionDate, Main } from '../styled';
-import initialNews from '../../demoData/news.json';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Text from 'antd/lib/typography/Text';
-import EditOpportunities from '../../components/opportunities/EditModal';
-import ViewOpportunities from '../../components/opportunities/ViewModal';
+
+import CreateResourceModal from 'components/resources/CreateResource';
+import EditResourceModal from 'components/resources/EditResource';
+import ViewResourceModal from 'components/resources/ViewResource';
+import { getResources, deleteResource } from 'app/features/resources';
+
+import {
+  Block,
+  BlockBody,
+  BlockFooter,
+  BlockHead,
+  BlockName,
+  BlockText,
+  BlockTitle,
+  Main,
+} from '../styled';
+import { Button, Col, Image, Modal, PageHeader, Row } from 'antd';
 
 
 const Resources = () => {
-    const [allNews] = useState(initialNews)
-    const [modalData, setViewModal] = useState(false)
-    const [editModal, setEditModal] = useState(false)
+    const dispatch = useDispatch();
+    const resourcesEntity = useSelector(state => state.resources);
+    const { resources } = resourcesEntity;
+    const [allResources] = useState([])
+    const [ViewResource, setViewResource] = useState(false);
+    const [CreateResource, setCreateResource] = useState(false);
+    const [EditResource, setEditResource] = useState(false);
+    const [resource, setResource] = useState('');
+
+    useEffect(() => {
+      dispatch(getResources());
+    }, [dispatch]);
+
+    const handleViewResource = id => {
+      setViewResource(true);
+      const findOne = resources.filter(res => res.resourceId === id);
+      setResource(findOne);
+    };
+
+    const handleEditResource = id => {
+      setEditResource(true);
+      const findOne = resources.filter(res => res.resourceId === id);
+      setResource(findOne);
+    };
 
     return (
-        <>
-            <PageHeader title="Resources" className='heading'>
-                <Button type='primary' size='large' onClick={() => setEditModal(true)}>+ Add Resources</Button>
-            </PageHeader>
-            <Main>
-                <Row gutter={25}>
-                    {allNews.concat(allNews).concat(allNews).map((news, index) => <Col key={index} className='block-col' xxl={6} lg={8} md={12}>
-                        
-                        <Block>
-                            <BlockBody>
-                                <BlockHead>
-                                    <Image preview={false} src={news.imageUrl} />
-                                    <BlockName>Inside Out Contracts Limited</BlockName>
-                                </BlockHead>
-                                <BlockTitle>Digital Marketing Apprentice</BlockTitle>
-                                <BlockText>
-                                    <Text>Estio Training have an exciting new opportunity for a Digital Marketer with Inside Out Contracts, a furniture provider based in London.</Text>
-                                </BlockText>
-                                <Submission>
-                                    <Text>Submission Deadline</Text>
-                                    <SubmissionDate>15 Jan 2022</SubmissionDate>
-                                </Submission>
-                            </BlockBody>
-                            <BlockFooter>
-                                <Button type='primary' onClick={() => setEditModal(true)}>Edit</Button>
-                                <Button type='link' onClick={() => setViewModal(true)}>View</Button>
-                                <Button type='danger' className='delete'>Delete</Button>
-                            </BlockFooter>
-                        </Block>
+      <>
+        <PageHeader title="Resources" className="heading">
+          <Button type="primary" size="large" onClick={() => setCreateResource(true)}>
+            + Add Resources
+          </Button>
+        </PageHeader>
+        <Main>
+          <Row gutter={25}>
+            {allResources.concat(resources).map((res, index) => (
+              <Col key={index} className="block-col" xxl={6} lg={8} md={12}>
+                <Block>
+                  <BlockBody>
+                    <BlockHead>
+                      <Image preview={false} src={res.uploadUrl} />
+                      <BlockName>{res.username}</BlockName>
+                    </BlockHead>
+                    <BlockTitle>{res.title}</BlockTitle>
+                    <BlockText>
+                      <Text>{res.shortDescription.slice(0, 100)}...</Text>
+                    </BlockText>
+                  </BlockBody>
+                  <BlockFooter>
+                    <Button type="primary" onClick={() => handleEditResource(res.resourceId)}>
+                      Edit
+                    </Button>
+                    <Button type="link" onClick={() => handleViewResource(res.resourceId)}>
+                      View
+                    </Button>
+                    <Button type="danger" className="delete" onClick={() => dispatch(deleteResource(res.resourceId))}>
+                      Delete
+                    </Button>
+                  </BlockFooter>
+                </Block>
+              </Col>
+            ))}
 
-                    </Col>)}
+            <Modal
+              onCancel={() => setViewResource(false)}
+              visible={ViewResource}
+              width={700}
+              bodyStyle={{ padding: '40px' }}
+              className="job-modal"
+              onOk={() => setViewResource(false)}
+            >
+              <ViewResourceModal resource={resource} />
+            </Modal>
 
-                    <Modal onCancel={() => setViewModal(false)} visible={ modalData } width={700} bodyStyle={{padding: '40px'}} className='job-modal'>
-                        <ViewOpportunities />
-                    </Modal>
-                    
-                    <Modal onCancel={() => setEditModal(false)} visible={ editModal } width={600} bodyStyle={{padding: '40px'}} className='job-modal'>
-                        <EditOpportunities />
-                    </Modal>
-                </Row>
-                
-            </Main>
-        </>
-    )
+            <Modal
+              onCancel={() => setEditResource(false)}
+              visible={EditResource}
+              width={600}
+              bodyStyle={{ padding: '40px' }}
+              className="job-modal"
+            >
+              <EditResourceModal resource={resource} />
+            </Modal>
+            <Modal
+              onCancel={() => setCreateResource(false)}
+              visible={CreateResource}
+              width={600}
+              bodyStyle={{ padding: '40px' }}
+              className="job-modal"
+            >
+              <CreateResourceModal />
+            </Modal>
+          </Row>
+        </Main>
+      </>
+    );
 }
 
 export default Resources;

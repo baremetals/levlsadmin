@@ -36,7 +36,7 @@ const SignIn = () => {
             name="email"
             rules={[{ message: 'Please input your Email!', required: true }]}
             label="Email Address"
-            initialValue="maguyva@icloud.com"
+            // initialValue="maguyva@icloud.com"
             placeholder="Please enter a valid email address"
           >
             <Input />

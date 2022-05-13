@@ -29,9 +29,11 @@ module.exports = override(
     modules: true,
     options: {
       modules: true, // must add this
+      // baseUrl: 'src',
     },
     test: /\.css$/,
     loaders: ['style-loader', 'css-loader?modules'],
+    // include: ['src'],
   }),
   supportMjs(),
   (config, env) => {

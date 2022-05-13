@@ -38,7 +38,7 @@ import {
 //   loadingData
 } from 'app/features/adminSlice'
 
-import { clearErrors, stopLoadingUi, setErrors, loadingUi } from 'app/features/ui/uiSlice'
+import { clearErrors, setErrors, loadingUi } from 'app/features/ui/uiSlice'
 import history from 'config/history'
 // import axios from "axios";
 

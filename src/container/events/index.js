@@ -1,49 +1,109 @@
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getEvents, deleteEvent } from 'app/features/events';
+
 import { Button, Col, Image, Modal, PageHeader, Row } from 'antd';
-import React, { useState } from 'react';
 import { Main, Block, BlockBody, BlockFooter, BlockName, BlockTitle } from '../styled';
-import NewsArticle from '../../demoData/news.json';
-import EditArticleModal from '../../components/article/EditArticle';
-import ViewArticleModal from '../../components/article/ViewArticle';
+
+
+import EditEventModal from 'components/events/EditEvent';
+import ViewEventModal from 'components/events/ViewEvent';
+import CreateEventModal from 'components/events/CreateEvent';
 
 const Events = () => {
-    const [AllArticle] = useState(NewsArticle)
-    const [modalData, setViewArticle] = useState(false)
-    const [EditArticle, setEditArticle] = useState(false)
+    const dispatch = useDispatch();
+    const eventsEntity = useSelector(state => state.events);
+    const { events } = eventsEntity;
+    const [AllEvents] = useState([])
+
+    const [ViewEvent, setViewEvent] = useState(false);
+    const [CreateEvent, setCreateEvent] = useState(false);
+    const [EditEvent, setEditEvent] = useState(false);
+    const [event, setEvent] = useState([]);
+
+    useEffect(() => {
+      dispatch(getEvents());
+    }, [dispatch]);
+
+    const handleViewEvent = id => {
+      setViewEvent(true);
+      const findOne = events.filter(res => res.eventId === id);
+      setEvent(findOne[0]);
+    };
+
+    const handleEditEvent = id => {
+      setEditEvent(true);
+      const findOne = events.filter(res => res.eventId === id);
+      setEvent(findOne[0]);
+    };
+
     return (
-        <>
-            <PageHeader title="Events" className='heading'>
-                <Button type='primary' size='large' onClick={() => setEditArticle(true)}>+ Add Event</Button>
-            </PageHeader>
-            
-            <Main>
-                <Row gutter={25}>
-                    {AllArticle.concat(AllArticle).map((article) => <Col xxl={6} lg={8} md={12} className='block-col'>
-                        <Block>
-                            <Image preview={false} src={'https://firebasestorage.googleapis.com/v0/b/justappli-b9f5c.appspot.com/o/news%2F608101005805.jpeg?alt=media&token=a4136d7d-49f3-4f71-a935-fbdc8401d0ff'} />
-                            <BlockBody>
-                                <BlockName>{article.category}</BlockName>
-                                <BlockTitle>{article.title}</BlockTitle>
-                                {/* <BlockText>{article.shortDescription}</BlockText> */}
-                            </BlockBody>
-                            <BlockFooter>
-                                <Button type='primary' onClick={() => setEditArticle(true)}>Edit</Button>
-                                <Button type='link' onClick={() => setViewArticle(true)}>View</Button>
-                                <Button type='danger' className='delete'>Delete</Button>
-                            </BlockFooter>
-                        </Block>
-                    </Col>)}
-                    
-                    <Modal onCancel={() => setViewArticle(false)} visible={ modalData } width={700} bodyStyle={{padding: '40px'}}>
-                        <ViewArticleModal />
-                    </Modal>
-                    
-                    <Modal onCancel={() => setEditArticle(false)} visible={ EditArticle } width={600} bodyStyle={{padding: '40px'}} className='job-modal'>
-                        <EditArticleModal />
-                    </Modal>
-                </Row>
-            </Main>
-        </>
-    )
+      <>
+        <PageHeader title="Events" className="heading">
+          <Button type="primary" size="large" onClick={() => setCreateEvent(true)}>
+            + Add Event
+          </Button>
+        </PageHeader>
+
+        <Main>
+          <Row gutter={25}>
+            {AllEvents.concat(events).map(eve => (
+              <Col xxl={6} lg={8} md={12} className="block-col">
+                <Block>
+                  <Image preview={false} src={eve.eventMediaUrl} />
+                  <BlockBody>
+                    <BlockName>{eve.category}</BlockName>
+                    <BlockTitle>{eve.title}</BlockTitle>
+                    {/* <BlockText>{article.shortDescription}</BlockText> */}
+                  </BlockBody>
+                  <BlockFooter>
+                    <Button type="primary" onClick={() => handleEditEvent(eve.eventId)}>
+                      Edit
+                    </Button>
+                    <Button type="link" onClick={() => handleViewEvent(eve.eventId)}>
+                      View
+                    </Button>
+                    <Button type="danger" className="delete" onClick={() => dispatch(deleteEvent(eve.eventId))}>
+                      Delete
+                    </Button>
+                  </BlockFooter>
+                </Block>
+              </Col>
+            ))}
+
+            <Modal
+              onCancel={() => setViewEvent(false)}
+              visible={ViewEvent}
+              width={700}
+              bodyStyle={{ padding: '40px' }}
+              onOk={() => setViewEvent(false)}
+            >
+              <ViewEventModal event={event} />
+            </Modal>
+            <Modal
+              onCancel={() => setCreateEvent(false)}
+              visible={CreateEvent}
+              width={700}
+              bodyStyle={{ padding: '40px' }}
+              onOk={() => setCreateEvent(false)}
+            >
+              <CreateEventModal />
+            </Modal>
+
+            <Modal
+              onCancel={() => setEditEvent(false)}
+              visible={EditEvent}
+              width={600}
+              bodyStyle={{ padding: '40px' }}
+              className="job-modal"
+              onOk={() => setEditEvent(false)}
+            >
+              <EditEventModal event={event} />
+            </Modal>
+          </Row>
+        </Main>
+      </>
+    );
 }
 
 export default Events;

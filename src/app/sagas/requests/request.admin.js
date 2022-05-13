@@ -21,7 +21,6 @@ export async function requestLogin(userData) {
     url: API.auth.login,
     data: userData.payload,
   });
-  console.log(res)
     requestSetAuthorizationHeader(res.data.token);
 }
 

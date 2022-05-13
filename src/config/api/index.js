@@ -14,11 +14,47 @@ const API = {
     user: `${url}/admin/user`,
     notifications: `${url}/notifications`,
   },
-  articles: {
-    create: `${url}/articles`,
-    find: `${url}/articles`,
-    findone: `${url}/articles`,
-    update: `${url}/articles`,
+  news: {
+    create: `${url}/admin/newsposts`,
+    find: `${url}/newsposts`,
+    findone: `${url}/newsposts`,
+    update: `${url}/newspost`,
+    delete: `${url}/newspost`,
+  },
+  resources: {
+    create: `${url}/admin/resources`,
+    find: `${url}/resources`,
+    findone: `${url}/resource`,
+    update: `${url}/resource`,
+    delete: `${url}/resource`,
+  },
+  events: {
+    create: `${url}/admin/events`,
+    find: `${url}/events`,
+    findone: `${url}/event`,
+    update: `${url}/event`,
+    delete: `${url}/event`,
+  },
+  apprenticeships: {
+    create: `${url}/admin/apprenticeships`,
+    find: `${url}/admin/apprenticeships`,
+    findone: `${url}/apprenticeship`,
+    update: `${url}/apprenticeship`,
+    delete: `${url}/apprenticeship`,
+  },
+  internships: {
+    create: `${url}/admin/internships`,
+    find: `${url}/admin/internships`,
+    findone: `${url}/internship`,
+    update: `${url}/internship`,
+    delete: `${url}/internship`,
+  },
+  grants: {
+    create: `${url}/admin/grants`,
+    find: `${url}/admin/grants`,
+    findone: `${url}/grant`,
+    update: `${url}/grant`,
+    delete: `${url}/grant`,
   },
 };
 

@@ -59,7 +59,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu }) => {
         </Menu.Item>
       </SubMenu>
 
-      <SubMenu key="opportunities" icon={!topMenu && <FeatherIcon icon="home" />} title="Opportunities">
+      <SubMenu key="opportunities" icon={!topMenu && <FeatherIcon icon="briefcase" />} title="Opportunities">
         <Menu.Item key="apprenticeships">
           <NavLink onClick={toggleCollapsed} to={`${path}/apprenticeships`}>
             Apprenticeships
@@ -77,7 +77,7 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu }) => {
         </Menu.Item>
       </SubMenu>
 
-      <Menu.Item key="articles" icon={!topMenu && <FeatherIcon icon="home" />}>
+      <Menu.Item key="articles" icon={!topMenu && <FeatherIcon icon="book-open" />}>
         <NavLink onClick={toggleCollapsed} to={`${path}/articles`}>
           Articles
         </NavLink>
@@ -89,12 +89,12 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu }) => {
         </NavLink>
       </Menu.Item>
 
-      <Menu.Item key="performance" icon={!topMenu && <FeatherIcon icon="home" />}>
+      <Menu.Item key="performance" icon={!topMenu && <FeatherIcon icon="calendar" />}>
         <NavLink onClick={toggleCollapsed} to={`${path}/events`}>
           Events
         </NavLink>
       </Menu.Item>
-      <Menu.Item key="users" icon={!topMenu && <FeatherIcon icon="home" />}>
+      <Menu.Item key="users" icon={!topMenu && <FeatherIcon icon="users" />}>
         <NavLink onClick={toggleCollapsed} to={`${path}/users`}>
           Users
         </NavLink>

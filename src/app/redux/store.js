@@ -8,7 +8,8 @@ import watcherSaga from '../sagas/rootSaga';
 const sagaMiddleware = createSagaMiddleware();
 const store = configureStore({
   reducer: rootReducers,
-  middleware: getDefaultMiddleware => getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({ thunk: false, serializableCheck: false }).concat(sagaMiddleware),
 });
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
