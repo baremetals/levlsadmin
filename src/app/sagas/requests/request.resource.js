@@ -9,7 +9,7 @@ export function requestResources() {
 }
 
 export function requestCreateResource(formData, header) {
-  console.log('I am here mate');
+  // console.log('I am here mate');
   return axios.request({
     method: 'post',
     url: API.resources.create,

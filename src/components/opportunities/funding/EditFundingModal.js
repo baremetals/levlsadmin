@@ -10,6 +10,9 @@ import draftToHtml from 'draftjs-to-html';
 
 import { editFunding } from 'app/features/grants';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const EditOpportunities = entity => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
@@ -17,6 +20,8 @@ const EditOpportunities = entity => {
   const item = entity?.entity[0];
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const isLoading = useSelector(st => st.admin.loading);
+  const error = useSelector(err => err.ui.errors);
+  const success = useSelector(su => su.ui.success);
   const [content, setContent] = useState(item.content);
 
   // console.log(form);
@@ -48,6 +53,15 @@ const EditOpportunities = entity => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    if (error.error) {
+      toast.error(error.error);
+    }
+    if (success.message !== {}) {
+      toast.success(success.message);
+    }
+  }, [error, success]);
   return (
     <>
       <h2>Edit Funding</h2>
@@ -166,6 +180,7 @@ const EditOpportunities = entity => {
           </Col>
         </Row>
       </EditForm>
+      <ToastContainer />
     </>
   );
 };

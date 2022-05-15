@@ -14,6 +14,15 @@ const API = {
     user: `${url}/admin/user`,
     notifications: `${url}/notifications`,
   },
+  users: {
+    create: `${url}/admin/users`,
+    find: `${url}/admin/users`,
+    findOrgs: `${url}/admin/organisations`,
+    findone: `${url}/users`,
+    update: `${url}/admin/user/edit-user`,
+    updateOrg: `${url}/admin/user/edit-organisation`,
+    delete: `${url}/user`,
+  },
   news: {
     create: `${url}/admin/newsposts`,
     find: `${url}/newsposts`,

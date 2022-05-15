@@ -36,9 +36,9 @@ import {
 //   setUsernames,
 //   getUser,
 //   loadingData
-} from 'app/features/adminSlice'
+} from 'app/features/admin'
 
-import { clearErrors, setErrors, loadingUi } from 'app/features/ui/uiSlice'
+import { clearErrors, setErrors, loadingUi, setSuccess } from 'app/features/ui/uiSlice';
 import history from 'config/history'
 // import axios from "axios";
 
@@ -67,6 +67,7 @@ function* handleLogin(userData) {
       const user = yield call(requestGetAdminData);
       const { data } = user;
       yield put(setUser({ ...data }));
+      yield put(setSuccess({message: 'Logged in successfully'}));
       yield put(clearErrors());
       history.push('/admin');
     } catch (error) {

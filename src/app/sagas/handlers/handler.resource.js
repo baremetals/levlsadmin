@@ -16,7 +16,7 @@ import {
   removeResource,
   editResource,
 } from 'app/features/resources';
-import { clearErrors, stopLoadingUi, setErrors, loadingUi } from 'app/features/ui/uiSlice';
+import { clearErrors, stopLoadingUi, setErrors, loadingUi, setSuccess } from 'app/features/ui/uiSlice';
 
 function* handleGetResources() {
   yield put(loadingUi());
@@ -38,6 +38,7 @@ function* handleCreateResource(formData, header) {
     const res = yield call(requestCreateResource, formData, header);
     const { data } = res;
     yield put(createResource(data));
+    yield put(setSuccess({message: 'Resource created successfully'}));
     yield put(clearErrors());
   } catch (error) {
     console.log(error);
@@ -63,6 +64,7 @@ function* handleEditResource(resouceData) {
     const res = yield call(requestResources);
     const { data } = res;
     yield put(setResources(data));
+    yield put(setSuccess({message: 'Resource updated successfully'}));
   } catch (error) {
     console.log(error);
     yield put(setErrors(error.response.data));

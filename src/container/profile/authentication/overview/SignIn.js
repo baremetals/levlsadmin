@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { AuthWrapper } from './style';
-import { login } from 'app/features/adminSlice';
+import { login } from 'app/features/admin';
 import { Checkbox } from 'components/checkbox/checkbox';
 import Heading from 'components/heading/heading';
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(st => st.admin.loading);
+  const error = useSelector(err => err.ui.errors);
+  const success = useSelector(su => su.ui.success);
   const [form] = Form.useForm();
   const [state, setState] = useState({
     checked: null,
@@ -24,6 +29,18 @@ const SignIn = () => {
   const onChange = checked => {
     setState({ ...state, checked });
   };
+
+  useEffect(() => {
+    if (error.error) {
+      toast.error(error.error);
+    }
+    if (error.general) {
+      toast.error(error.general);
+    }
+    if (success.message !== {}) {
+      toast.success(success.message);
+    }
+  }, [error, success]);
 
   return (
     <AuthWrapper>
@@ -57,6 +74,7 @@ const SignIn = () => {
           </Form.Item>
         </Form>
       </div>
+      <ToastContainer />
     </AuthWrapper>
   );
 };

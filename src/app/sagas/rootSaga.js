@@ -1,6 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
 
 import adminSagas from './handlers/handler.admin';
+import userSagas from './handlers/handler.users';
 import newsArticleSagas from './handlers/handler.newsArticle';
 // import contestSagas from './handlers/handler.contestData';
 import eventSagas from './handlers/handler.event';
@@ -18,6 +19,7 @@ export default function* rootSaga() {
     fork(internshipSagas),
     fork(fundingSagas),
     fork(eventSagas),
-    // fork(contestSagas), fork(userDataSagas)
+    fork(userSagas)
+    // fork(contestSagas), 
   ]);
 }

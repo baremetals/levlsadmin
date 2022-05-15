@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Col, Image, Input, Row, Form } from 'antd';
 
@@ -8,6 +8,9 @@ import draftToHtml from 'draftjs-to-html';
 import { createNewsArticleEntity } from 'app/features/newsArticleSlice';
 import ModalEditor from '../Editor';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const CreateArticleModal = () => {
   const [form] = Form.useForm();
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -16,6 +19,8 @@ const CreateArticleModal = () => {
   );
   const dispatch = useDispatch();
   const isLoading = useSelector(st => st.admin.loading);
+  const error = useSelector(err => err.ui.errors);
+  const success = useSelector(su => su.ui.success);
   const [content, setContent] = useState('');
   const [value, setValue] = useState('');
 
@@ -64,6 +69,15 @@ const CreateArticleModal = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (error.error) {
+      toast.error(error.error);
+    }
+    if (success.message !== {}) {
+      toast.success(success.message);
+    }
+  }, [error, success]);
 
   return (
     <>
@@ -143,6 +157,7 @@ const CreateArticleModal = () => {
           </Col>
         </Row>
       </EditForm>
+      <ToastContainer />
     </>
   );
 };

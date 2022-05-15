@@ -71,7 +71,7 @@ const CreateEventModal = () => {
     if (success.message !== {}) {
       toast.success(success.message);
     }
-  }, [handleSubmit, error, success]);
+  }, [error, success]);
 
   return (
     <>
@@ -192,7 +192,7 @@ const CreateEventModal = () => {
           </Col>
           <Col md={24}>
             <Form.Item>
-              <Button size="large" type="primary" htmlType="submit" disabled={loading}>
+              <Button size="large" type="primary" htmlType="submit">
                 Submit
               </Button>
             </Form.Item>

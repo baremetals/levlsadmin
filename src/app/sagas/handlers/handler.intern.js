@@ -16,7 +16,7 @@ import {
   removeInternship,
   editInternship,
 } from 'app/features/internships';
-import { clearErrors, stopLoadingUi, setErrors, loadingUi } from 'app/features/ui/uiSlice';
+import { clearErrors, stopLoadingUi, setErrors, loadingUi, setSuccess } from 'app/features/ui/uiSlice';
 
 function* handleGetInternships() {
   yield put(loadingUi());
@@ -38,6 +38,7 @@ function* handleCreateInternship(formData, header) {
     const res = yield call(requestCreateInternship, formData, header);
     const { data } = res;
     yield put(createInternship(data));
+    yield put(setSuccess({message: 'Internship created successfully'}));
     yield put(clearErrors());
   } catch (error) {
     console.log(error);
@@ -63,6 +64,7 @@ function* handleEditInternship(internData) {
     const res = yield call(requestInternships);
     const { data } = res;
     yield put(setInternships(data));
+    yield put(setSuccess({message: 'Internship updated successfully'}));
   } catch (error) {
     console.log(error);
     yield put(setErrors(error.response.data));

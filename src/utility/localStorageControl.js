@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-import { setAuthenticated, logOut, getAdminData } from 'app/features/adminSlice';
+import { setAuthenticated, logOut, getAdminData } from 'app/features/admin';
 import store from 'app/redux/store';
 
 const getItem = key => {

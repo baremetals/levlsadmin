@@ -47,8 +47,8 @@ const Events = () => {
 
         <Main>
           <Row gutter={25}>
-            {AllEvents.concat(events).map(eve => (
-              <Col xxl={6} lg={8} md={12} className="block-col">
+            {AllEvents.concat(events).map((eve, index )=> (
+              <Col xxl={6} lg={8} md={12} className="block-col" key={index}>
                 <Block>
                   <Image preview={false} src={eve.eventMediaUrl} />
                   <BlockBody>

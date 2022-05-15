@@ -83,13 +83,13 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu }) => {
         </NavLink>
       </Menu.Item>
 
-      <Menu.Item key="resources" icon={!topMenu && <FeatherIcon icon="home" />}>
+      <Menu.Item key="resources" icon={!topMenu && <FeatherIcon icon="layers" />}>
         <NavLink onClick={toggleCollapsed} to={`${path}/resources`}>
           Resources
         </NavLink>
       </Menu.Item>
 
-      <Menu.Item key="performance" icon={!topMenu && <FeatherIcon icon="calendar" />}>
+      <Menu.Item key="events" icon={!topMenu && <FeatherIcon icon="calendar" />}>
         <NavLink onClick={toggleCollapsed} to={`${path}/events`}>
           Events
         </NavLink>
@@ -97,6 +97,11 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu }) => {
       <Menu.Item key="users" icon={!topMenu && <FeatherIcon icon="users" />}>
         <NavLink onClick={toggleCollapsed} to={`${path}/users`}>
           Users
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item key="organisations" icon={!topMenu && <FeatherIcon icon="users" />}>
+        <NavLink onClick={toggleCollapsed} to={`${path}/organisations`}>
+          Organisations
         </NavLink>
       </Menu.Item>
     </Menu>

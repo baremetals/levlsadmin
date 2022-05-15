@@ -16,7 +16,7 @@ import {
   removeApprenticeship,
   editApprenticeship,
 } from 'app/features/apprenticeships';
-import { clearErrors, stopLoadingUi, setErrors, loadingUi } from 'app/features/ui/uiSlice';
+import { clearErrors, stopLoadingUi, setErrors, loadingUi, setSuccess } from 'app/features/ui/uiSlice';
 
 function* handleGetApprenticeships() {
   yield put(loadingUi());
@@ -38,6 +38,7 @@ function* handleCreateApprenticeship(formData) {
     const res = yield call(requestCreateApprenticeship, formData);
     const { data } = res;
     yield put(createApprenticeship(data));
+    yield put(setSuccess({message: 'Apprenticeship created successfully'}));
     yield put(clearErrors());
   } catch (error) {
     console.log(error);
@@ -63,6 +64,7 @@ function* handleEditApprenticeship(appData) {
     const res = yield call(requestApprenticeships);
     const { data } = res;
     yield put(setApprenticeships(data));
+    yield put(setSuccess({message: 'Apprenticeship updated successfully'}));
   } catch (error) {
     console.log(error);
     yield put(setErrors(error.response.data));

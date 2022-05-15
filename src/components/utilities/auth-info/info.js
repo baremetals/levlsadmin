@@ -8,7 +8,7 @@ import Message from './message';
 import Notification from './notification';
 import { Popover } from '../../popup/popup';
 import { Dropdown } from '../../dropdown/dropdown';
-import { logOut } from 'app/features/adminSlice';
+import { logOut } from 'app/features/admin';
 import Heading from '../../heading/heading';
 
 

@@ -71,7 +71,7 @@ function* handleEditEventDetails(eventData) {
         const res = yield call(requestEditEventDetails, eventData);
         const { data } = res;
         yield put(setEvents(data));
-        yield put(setSuccess(data));
+        yield put(setSuccess({ message: "Event updated successfully" }));
       } catch (error) {
         console.log(error);
         yield put(setErrors(error.response.data));

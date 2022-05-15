@@ -16,7 +16,7 @@ import {
   removeFunding,
   editFunding,
 } from 'app/features/grants';
-import { clearErrors, stopLoadingUi, setErrors, loadingUi } from 'app/features/ui/uiSlice';
+import { clearErrors, stopLoadingUi, setErrors, loadingUi, setSuccess } from 'app/features/ui/uiSlice';
 
 function* handleGetFundingEntities() {
   yield put(loadingUi());
@@ -38,6 +38,7 @@ function* handleCreateFunding(formData, header) {
     const res = yield call(requestCreateFunding, formData, header);
     const { data } = res;
     yield put(createFunding(data));
+    yield put(setSuccess({message: 'Funding created successfully'}));
     yield put(clearErrors());
   } catch (error) {
     console.log(error);
@@ -63,6 +64,7 @@ function* handleEditFunding(internData) {
     const res = yield call(requestFundingEntities);
     const { data } = res;
     yield put(setFundingEntities(data));
+    yield put(setSuccess({message: 'Funding updated successfully'}));
   } catch (error) {
     console.log(error);
     yield put(setErrors(error.response.data));

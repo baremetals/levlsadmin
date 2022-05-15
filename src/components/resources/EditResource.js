@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Col, Image, Input, Row, Form } from 'antd';
+import { editResource } from 'app/features/resources';
 
+import { Button, Col, Image, Input, Row, Form } from 'antd';
 import { EditForm, ImagePreview, ImagePreviewDetail, InputGroup, InputTextarea, Label } from 'container/styled';
 import ModalEditEditor from '../EditEditor';
 import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 
-import { editResource } from 'app/features/resources';
+
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditResourceModal = (resource) => {
   const [form] = Form.useForm();
@@ -16,13 +20,15 @@ const EditResourceModal = (resource) => {
   const [preview, setPreview] = useState(uploadUrl);
   const dispatch = useDispatch();
   const isLoading = useSelector(st => st.admin.loading);
+  const error = useSelector(err => err.ui.errors);
+  const success = useSelector(su => su.ui.success);
 
   const [content, setContent] = useState(body);
   let [value, setValue] = useState('');
-  console.log(resource?.resource[0]);
+  // console.log(resource?.resource[0]);
 
   function setFile(event) {
-    console.log();
+    // console.log();
     const [file] = event.target.files;
     if (file) {
       setPreview(URL.createObjectURL(file));
@@ -67,6 +73,15 @@ const EditResourceModal = (resource) => {
       }
     }
   };
+
+  useEffect(() => {
+    if (error.error) {
+      toast.error(error.error);
+    }
+    if (success.message !== {}) {
+      toast.success(success.message);
+    }
+  }, [error, success]);
 
   return (
     <>
@@ -160,6 +175,7 @@ const EditResourceModal = (resource) => {
           </Col>
         </Row>
       </EditForm>
+      <ToastContainer />
     </>
   );
 };

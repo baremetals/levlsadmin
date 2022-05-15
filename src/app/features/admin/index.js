@@ -11,31 +11,31 @@ const adminSlice = createSlice({
   name: 'admin',
   initialState,
   reducers: {
-    loading(state, action) {
+    loading(state, _action) {
       return {
         ...state,
         loading: true,
       };
     },
-    setAuthenticated(state, action) {
+    setAuthenticated(state, _action) {
       return {
         ...state,
         authenticated: true,
       };
     },
-    setUnAuthenticated(state, action) {
+    setUnAuthenticated(_state, _action) {
       return initialState;
     },
-    setUser(state, action) {
+    setUser(_state, action) {
       return {
         authenticated: true,
         loading: false,
         ...action.payload,
       };
     },
-    login(userData) {},
+    login(_userData) {},
     getAdminData() {},
-    resetPassword(email) {},
+    resetPassword(_email) {},
     logOut() {},
     setAuthorizationHeader() {},
   },

@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Col, Image, Input, Row, Form } from 'antd';
+import { editNewsArticle } from 'app/features/newsArticleSlice';
 
+import { Button, Col, Image, Input, Row, Form } from 'antd';
 import { EditForm, ImagePreview, ImagePreviewDetail, InputGroup, InputTextarea, Label } from 'container/styled';
 import ModalEditEditor from '../EditEditor';
 import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 
-import { editNewsArticle } from 'app/features/newsArticleSlice';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -18,6 +21,8 @@ const EditArticleModal = (article) => {
   const [preview, setPreview] = useState(uploadUrl);
   const dispatch = useDispatch();
   const isLoading = useSelector(st => st.admin.loading);
+  const error = useSelector(err => err.ui.errors);
+  const success = useSelector(su => su.ui.success);
   const [content, setContent] = useState(body);
   let [value, setValue] = useState('');
 
@@ -51,7 +56,7 @@ const EditArticleModal = (article) => {
         console.log(err);
       }
     } else {
-      console.log(newsId);
+      // console.log(newsId);
       const articleData = {
         title: data.title,
         category: data.category,
@@ -68,6 +73,15 @@ const EditArticleModal = (article) => {
       }
     }
   };
+
+  useEffect(() => {
+    if (error.error) {
+      toast.error(error.error);
+    }
+    if (success.message !== {}) {
+      toast.success(success.message);
+    }
+  }, [error, success]);
 
   return (
     <>
@@ -161,6 +175,7 @@ const EditArticleModal = (article) => {
           </Col>
         </Row>
       </EditForm>
+      <ToastContainer />
     </>
   );
 };

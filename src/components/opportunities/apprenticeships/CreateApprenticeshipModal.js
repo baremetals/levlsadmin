@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
@@ -7,12 +7,17 @@ import ModalEditEditor from '../../EditEditor';
 import { EditForm, InputGroup, InputTextarea, Label } from 'container/styled';
 import { Button, Col, Input, Row, Form } from 'antd';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const CreateApprenticeship = () => {
   const [form] = Form.useForm();
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const dispatch = useDispatch();
   const isLoading = useSelector(st => st.admin.loading);
+  const error = useSelector(err => err.ui.errors);
+  const success = useSelector(su => su.ui.success);
   const [content, setContent] = useState('');
 
   
@@ -36,6 +41,15 @@ const CreateApprenticeship = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    if (error.error) {
+      toast.error(error.error);
+    }
+    if (success.message !== {}) {
+      toast.success(success.message);
+    }
+  }, [error, success]);
   return (
     <>
       <h2>Create Apprenticeship</h2>
@@ -98,10 +112,7 @@ const CreateApprenticeship = () => {
           <Col md={24}>
             <InputGroup>
               <Label>How to Apply</Label>
-              <Form.Item
-                name="howtoApply"
-                rules={[{ message: 'Please provide application method!', required: true }]}
-              >
+              <Form.Item name="howtoApply" rules={[{ message: 'Please provide application method!', required: true }]}>
                 <Input type={'text'} />
               </Form.Item>
             </InputGroup>
@@ -141,6 +152,7 @@ const CreateApprenticeship = () => {
           </Col>
         </Row>
       </EditForm>
+      <ToastContainer />
     </>
   );
 };

@@ -10,8 +10,8 @@ import propTypes from 'prop-types';
 import MenueItems from './MenueItems';
 import TopMenu from './TopMenu';
 import { Div, SmallScreenAuthInfo, SmallScreenSearch, TopMenuSearch } from './style';
-import HeaderSearch from '../components/header-search/header-search';
-import AuthInfo from '../components/utilities/auth-info/info';
+import HeaderSearch from 'components/header-search/header-search';
+import AuthInfo from 'components/utilities/auth-info/info';
 
 const { darkTheme } = require('../config/theme/themeVariables');
 
@@ -269,7 +269,7 @@ const ThemeLayout = WrappedComponent => {
                   <Footer className="admin-footer" style={footerStyle}>
                     <Row>
                       <Col md={12} xs={24}>
-                        <span className="admin-footer__copyright">2021 © SovWare</span>
+                        <span className="admin-footer__copyright">2022 © levls</span>
                       </Col>
                       <Col md={12} xs={24}>
                         <div className="admin-footer__links">

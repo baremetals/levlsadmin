@@ -10,7 +10,7 @@ import Admin from './routes/admin';
 import Auth from './routes/auth';
 import './static/css/style.css';
 import config from './config/config';
-import ProtectedRoute from './components/utilities/protectedRoute';
+import ProtectedRoute from 'components/utilities/protectedRoute';
 import { useIsAuth } from 'utility/localStorageControl';
 
 const { theme } = config;

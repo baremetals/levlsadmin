@@ -9,7 +9,7 @@ export function requestNewsArticles() {
 }
 
 export function requestCreateNewsArticle(formData, header) {
-  console.log('I am here mate');
+  // console.log('I am here mate');
   return axios.request({
     method: 'post',
     url: API.news.create,
@@ -27,24 +27,10 @@ export function requestEditNewsArticle(data) {
 }
 
 export function requestDeleteNewsArticle(id) {
-         console.log('request', id.payload);
-         return axios.request({
-           method: 'delete',
-           url: `${API.news.delete}/${id.payload}`,
-         });
-       }
-// export function requestGetBlogPost(blogpostId) {
-//     return axios.request({
-//       method: "get",
-//       url: `${config.prodUrlEndpoint}/blogpost/${blogpostId}`,
-//       data: blogpostId.payload
-//     });
-// }
+  // console.log('request', id.payload);
+  return axios.request({
+    method: 'delete',
+    url: `${API.news.delete}/${id.payload}`,
+  });
+}
 
-// export function requestGetUserBlogPostsData(userId) {
-//     return axios.request({
-//       method: "get",
-//       url: `${config.prodUrlEndpoint}/userId`,
-//       data: userId.payload
-//     });
-// }
